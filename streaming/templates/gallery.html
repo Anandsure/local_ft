@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Local_FT - Gallery</title>
+    <link href="https://fonts.googleapis.com/css?family=Overpass:100,300,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="../static/nav.css">
+    <link rel="icon" href="../static/favicon.png" type="image/png">
+    <script src="https://use.fontawesome.com/88a44a09b2.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://cdn.rawgit.com/dimsemenov/Magnific-Popup/master/dist/magnific-popup.css'>
+    <link rel="stylesheet" href="../static/style.css">
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div id="wrapper">
+        <div class="overlay"></div>
+
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="http://0.0.0.0:5000/">
+                        Local_FT
+                    </a>
+                </li>
+                <li>
+                    <a href="http://0.0.0.0:5000/"><i class="fa fa-fw fa-home"></i>Video gallery</a>
+                </li>
+                <li>
+                    <a href="http://0.0.0.0:5000/upload"><i class="fa fa-fw fa-folder"></i>Upload Video</a>
+                </li>
+                <li>
+                    <a href="http://0.0.0.0:5000/player"><i class="fa fa-fw fa-file-o"></i>Video player</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+                <span class="hamb-middle"></span>
+                <span class="hamb-bottom"></span>
+            </button>
+            <div class="container">
+                <div class="content">
+                    <h1 class="section-header">Video Gallery</h1>
+                    <div class="section-header-underline"></div>
+                    {% for n in range(fnames | length) %}
+                    <div class="video-gallery">
+                        <div onclick="setoff('{{cap[n]}}')" class="gallery-item">
+                            <img src={{fnames[n]}} alt="DDS" />
+                            <div class="gallery-item-caption">
+                                <div>
+                                    <h2 style="font-size:30px">{{cap[n][:20:1]}}...</h2>
+                                    <p>video: {{n+1}}</p>
+                                </div>
+                                <!-- <a href="https://vimeo.com/3653567"></a> -->
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <script src='https://cdn.rawgit.com/dimsemenov/Magnific-Popup/master/dist/jquery.magnific-popup.js'></script>
+    <script src="../static/script.js"></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+    <script src="../static/nav.js"></script>
+
+</body>
+<script>
+    function setoff(name) {
+        console.log(name);
+        var respon_json = {
+            "text": name
+        }
+        $.ajax({
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            url: "http://0.0.0.0:5000/player/update",
+            traditional: "true",
+            data: JSON.stringify(respon_json),
+            dataType: "json",
+            success: function (response) {
+                window.open('/player');
+            }
+        });
+        //window.open('/player');
+    }
+</script>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Local_FT</title>
+    <link rel="icon" href="../static/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:100,300'>
+    <link rel="stylesheet" href="../static/uppp.css">
+
+</head>
+
+<body>
+
+    <!-- partial:index.partial.html -->
+    <div class="upload">
+        <div class="upload-files">
+            <header>
+                <p>
+                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                    <span class="up">Local</span>
+                    <span class="load">File Transfer</span>
+                </p>
+            </header>
+            <div class="body" id="drop">
+                <i class="fa fa-file-text-o pointer-none" aria-hidden="true"></i>
+                <p class="pointer-none text-black"><b>Drag and drop files here <br /> or</b> <a href=""
+                        id="triggerFile">browse</a>
+                    <b>to begin the upload</b></p>
+                <form action="http://0.0.0.0:5000/uploader" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="file" multiple="multiple" />
+            </div>
+            <footer>
+                <div class="divider">
+                    <span>
+                        <AR>FILES</AR>
+                    </span>
+                </div>
+                <div class="list-files">
+                    <!--   template   -->
+                </div>
+                <button type="submit" class="importar">SEND FILE</button>
+                </form>
+            </footer>
+        </div>
+        <center>
+            <a href="/" class="text-center" style="color: #000000;">Go Back</a>
+        </center>
+    </div>
+
+    <!-- partial -->
+    <script src="../static/uppp.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+</body>
+
+<script>
+    function xx() {
+        // var form_data = new FormData($('#upload-file')[0]);
+        var form_data = new FormData(document.getElementById('upload-file'));
+        $.ajax({
+            type: 'POST',
+            url: 'http://0.0.0.0:5000/uploader',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (data) {
+                console.log('Success!');
+            },
+        });
+
+    }
+</script>
+
+</html>

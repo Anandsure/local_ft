@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Local_FT - Player</title>
+    <link href="https://fonts.googleapis.com/css?family=Overpass:100,300,700" rel="stylesheet">
+    <link rel="icon" href="../static/favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <script src="https://use.fontawesome.com/88a44a09b2.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://cdn.rawgit.com/dimsemenov/Magnific-Popup/master/dist/magnific-popup.css'>
+    <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet">
+
+    <style>
+        body,
+        html {
+            height: 100%;
+            background: -webkit-gradient(linear, left bottom, left top, from(#4F6072), to(#8699AA));
+            background: linear-gradient(to top, #4F6072, #8699AA);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <center style="margin-top: 4vh">
+        <!-- HTML -->
+        <video id='hls-example' class="video-js vjs-default-skin" width="1200" height="800" controls
+            style="margin-bottom: 20px;">
+            <source type="application/x-mpegURL" src="../static/media/{{click}}/{{click}}.m3u8">
+        </video>
+        <a href="/" style="color: white; margin-top: 30px;">Go Back Home</a>
+    </center>
+
+    <!-- JS code -->
+    <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+    <!-- /#wrapper -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <script src='https://cdn.rawgit.com/dimsemenov/Magnific-Popup/master/dist/jquery.magnific-popup.js'></script>
+    <script src="../static/script.js"></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+    <script src="https://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.js"></script>
+    <script src="https://vjs.zencdn.net/7.2.3/video.js"></script>
+
+    <script>
+        var player = videojs('hls-example');
+        player.play();
+    </script>
+
+</body>
+
+</html>

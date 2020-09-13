@@ -1,0 +1,10 @@
+files_to_upload/LVL5-GREIFER.mp4
+simulated_server_storage
+deets.txt
+streaming/static/media/*
+streaming/__pycache__
+static/thumbnails
+env
+node_modules
+.DS_Store
+.vscode
